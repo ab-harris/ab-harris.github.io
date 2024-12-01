@@ -1,32 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Form on Image</title>
-  
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
-<html>
-<head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
+  <title>Form on Image</title>
   <style>
-    body,html {
+    /* Basic Styles */
+    body, html {
       height: 100%;
+      margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #241c0c;
-      
-      margin: 50px auto;
+      background-color: #241c0c;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    ul {
+    /* Navigation Styles */
+    nav ul {
       list-style-type: none;
       margin: 0;
       padding: 5px;
@@ -35,14 +27,14 @@
       position: fixed;
       top: 0;
       width: 100%;
-      font-family: helvetica;
+      font-family: Helvetica;
     }
 
-    li {
+    nav li {
       float: left;
     }
 
-    li a {
+    nav li a {
       display: block;
       color: white;
       text-align: center;
@@ -50,7 +42,7 @@
       text-decoration: none;
     }
 
-    li a:hover:not(.active) {
+    nav li a:hover:not(.active) {
       background-color: #fc9f9f;
     }
 
@@ -58,31 +50,35 @@
       background-color: #04AA6D;
     }
 
+    /* Background Image */
     .bg-img {
-      /* The image used */
       background-image: url("https://ab-harris.github.io/hosted-assets/000018%202.jpg");
       min-height: 680px;
-      /* Center and scale the image nicely */
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       position: relative;
+      padding-top: 60px; /* Space for navigation bar */
     }
 
-    /* Add styles to the form container */
+    /* Form Styles */
     .container {
       position: absolute;
-      right: 10;
-      margin: 15px;
-      max-width: 250px;
+      right: 10px;
+      top: 20%;
+      max-width: 300px;
       padding: 20px;
       background-color: #c98a0a;
       box-shadow: 3px 3px 7px #4a0b0c;
     }
 
-    /* Full-width input fields */
-    input[type=name],
-    input[type=email] {
+    .container h1 {
+      text-align: center;
+    }
+
+    /* Form Inputs */
+    input[type="text"],
+    input[type="email"] {
       width: 100%;
       padding: 15px;
       margin: 5px 0 22px 0;
@@ -90,13 +86,14 @@
       background: #f1f1f1;
     }
 
-    input[type=name]:focus,
-    input[type=email]:focus {
-      background-color: black outline: none;
-      padding: 15px;
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+      background-color: black;
+      color: white;
+      outline: none;
     }
 
-    /* Set a style for the submit button */
+    /* Submit Button */
     .btn {
       background-color: #4a0b0c;
       color: white;
@@ -106,65 +103,96 @@
       cursor: pointer;
       width: 100%;
       opacity: 0.9;
+      transition: opacity 0.3s ease;
     }
 
     .btn:hover {
       opacity: 1;
     }
 
-    .footer{
-    bottom: 0; 
-    left: 0;
-    right: 0;
-    position: fixed;
-    z-index: 9999;
-    width:100%;
-    background-color: #30010b;
-    text-align: left;
-    font-family: helvetica;
-    color:white; 
+    /* Footer Styles */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: #30010b;
+      color: white;
+      text-align: left;
+      padding: 10px;
     }
-    @media screen and (max-width: 600px)
+
+    .footer ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer li {
+      display: inline;
+      margin-right: 10px;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media screen and (max-width: 600px) {
+      .container {
+        max-width: 90%;
+      }
+
+      .btn {
+        font-size: 16px;
+        padding: 14px 18px;
+      }
+
+      input[type="text"],
+      input[type="email"] {
+        font-size: 14px;
+      }
+    }
   </style>
+</head>
 
 <body>
 
+  <!-- Navigation -->
   <nav id="nav">
     <ul>
-      <li> <a class="active"  href="#"><b>ANNE B HARRIS</b></a></li>
-      <li> <a class="active"  href="#">Home</a></li>
-      <li> <a class="active"  href="#">Portfolio</a></li>
-      <li> <a class="active"  href="#">Bio</a></li>
-      <li> <a class="active"   href="#">CV</a></li>
-      <li> <a class="active"  href="#">Contact</a> </li>
+      <li><a class="active" href="#"><b>ANNE B HARRIS</b></a></li>
+      <li><a class="active" href="#">Home</a></li>
+      <li><a class="active" href="#">Portfolio</a></li>
+      <li><a class="active" href="#">Bio</a></li>
+      <li><a class="active" href="#">CV</a></li>
+      <li><a class="active" href="#">Contact</a></li>
     </ul>
   </nav>
 
+  <!-- Background Image and Form -->
   <div class="bg-img">
     <form action="/action_page.php" class="container">
       <h1>Contact Me</h1>
 
-      <label for="name"><b>name</b></label>
-      <input type="name" placeholder="first and last name" name="first and last name" required>
+      <label for="name"><b>Name</b></label>
+      <input type="text" placeholder="First and Last Name" name="name" required>
 
-      <label for="email"><b>email</b></label>
+      <label for="email"><b>Email</b></label>
       <input type="email" placeholder="Enter email" name="email" required>
 
-      <button type="submit" class="btn">submit</button>
+      <button type="submit" class="btn">Submit</button>
     </form>
   </div>
 
-</body>
-  </html>
-  
-   
-  <div id="footer">
+  <!-- Footer -->
+  <div class="footer">
     <ul>
-      <li> <a href="#">Instagram</a> </li>
-      <li> <a href="#">Vimeo</a> </li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Vimeo</a></li>
     </ul>
-      </div>
-<!-- partial -->
+  </div>
+
+</body>
+</html>
+
   
 </body>
 </html>
